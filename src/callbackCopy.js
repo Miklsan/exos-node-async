@@ -17,3 +17,17 @@ fs.copyFile('.././file2.txt', '.././file3.txt', (err, data) => {
 })
 
 console.log('END OF PROGRAM')
+
+/*const fs = require('fs');
+const { COPYFILE_EXCL } = fs.constants;
+
+function callback(err) {
+  if (err) throw err;
+  console.log('source.txt was copied to destination.txt');
+}
+
+// destination.txt will be created or overwritten by default.
+fs.copyFile('source.txt', 'destination.txt', callback);
+
+// By using COPYFILE_EXCL, the operation will fail if destination.txt exists.
+fs.copyFile('source.txt', 'destination.txt', COPYFILE_EXCL, callback);*/

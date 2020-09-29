@@ -9,20 +9,18 @@ import fs from 'fs/promises'
 
 console.log('START OF PROGRAM')
 
-const creatFile5 = async () => {
-    let content = await fs.writeFile('./../file5.txt', 'Hello World !', 'utf-8')
-    return content
+let fileSrc = process.argv[2]
+let fileDest = process.argv[3]
+
+try {
+    let stats = await fs.stat(fileSrc)
+    if (stats.isFile()) {
+        await fs.copyFile(fileSrc, fileDest)
+        console.log(
+            'file.txt was copied to file2.txt asynchronously with a promise'
+        )
+    }
+} catch (e) {
+    console.error(e)
 }
-
-const copyFile6 = async () => {
-    let content = await fs.copyFile('./../file5.txt', './../file6.txt')
-    return content
-}
-
-let content1 = await creatFile5()
-console.log(content1)
-
-let content2 = await copyFile6()
-console.log(content2)
-
 console.log('END OF PROGRAM')
